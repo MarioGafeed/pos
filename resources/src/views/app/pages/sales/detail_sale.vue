@@ -48,6 +48,9 @@
           <b-row class="justify-content-md-center">
             <h4 class="font-weight-bold">{{$t('SaleDetail')}} : {{sale.Ref}}</h4>
           </b-row>
+          <b-row class="justify-content-md-center">
+            <h4 class="font-weight-bold">{{$t('Date')}} : {{sale.date}}</h4>
+          </b-row>
           <hr>
           <b-row class="mt-5">
             <b-col lg="4" md="4" sm="12" class="mb-4">
@@ -101,6 +104,7 @@
                 <table class="table table-hover table-md">
                   <thead class="bg-gray-300">
                     <tr>
+                      <th scope="col">#</th>
                       <th scope="col">{{$t('ProductName')}}</th>
                       <th scope="col">{{$t('Net_Unit_Price')}}</th>
                       <th scope="col">{{$t('Quantity')}}</th>
@@ -111,7 +115,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="detail in details">
+                    <tr v-if="details.length <=0">
+                      <td colspan="9">{{$t('NodataAvailable')}}</td>
+                    </tr>
+                    <tr v-for="(detail, index) in details">
+                      <td >{{ index+1 }}</td>
+                    
                       <td><span>{{detail.code}} ({{detail.name}})</span>
                         <p v-show="detail.is_imei && detail.imei_number !==null ">{{$t('IMEI_SN')}} : {{detail.imei_number}}</p>
                       </td>
@@ -142,6 +151,10 @@
                   <tr>
                     <td>{{$t('Shipping')}}</td>
                     <td>{{currentUser.currency}} {{sale.shipping.toFixed(2)}}</td>
+                  </tr>
+                  <tr>
+                    <td>{{$t('total_before_dis')}}</td>
+                    <td>{{currentUser.currency}} {{ Number(sale.discount.toFixed(2))  + Number(sale.GrandTotal) }}</td>
                   </tr>
                   <tr>
                     <td>

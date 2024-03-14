@@ -9,9 +9,10 @@
 	height: 100%;
 	position: relative;
 	margin: 0 auto;
-	color: black;
+	color: #555555;
+	font-family: Arial, sans-serif;
 	font-size: 14px;
-	font-family: 'dejavu sans', sans-serif;
+	font-family: SourceSansPro;
 
   }
 
@@ -202,12 +203,12 @@ h2.name {
 #details_inv>table td {
 	padding: 6px;
 	background: #EEEEEE;
-	text-align: left;
+	text-align: center;
 }
 
 #details_inv>table th {
 	padding: 6px;
-	text-align: left;
+	text-align: center;
 	border-bottom: 1px solid #FFFFFF;
 	color: #fff;
 	background: blueviolet;
@@ -217,7 +218,7 @@ h2.name {
 }
 
 #details_inv>table td {
-	text-align: left;
+	text-align: center;
 }
 
 #details_inv>table td h3 {

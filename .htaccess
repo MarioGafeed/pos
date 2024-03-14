@@ -21,29 +21,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ server.php
 
-
-#Disable index view
-options -Indexes
-
-#hide a Specifuc File
-
-<Files .env>
-order allow,deny
-Deny from all
-</Files>
-
-# block files which needs to be hidden, specify .example extension of the file
-<Files ~ "\.(example|config.js|md|gitignore|gitattributes|lock|git)$">
-    Order allow,deny
-    Deny from all
-</Files>
-
-<FilesMatch "\.csv$">
-    Header set Content-Disposition "attachment"
-    Header set Content-Type "text/csv"
-</FilesMatch>
-
-
 # BEGIN W3TC Browser Cache
 <IfModule mod_mime.c>
     AddType text/css .css
